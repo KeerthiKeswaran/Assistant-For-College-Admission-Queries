@@ -18,11 +18,6 @@ export const Chatbot = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const CHATBOT_API = import.meta.env.VITE_CHATBOT_API;
-  if (!CHATBOT_API) {
-    console.error("Environment variable is not defined.");
-    return;
-  }
 
   const getResponseFromBackend = async (message: string) => {
     try {

@@ -9,12 +9,7 @@ const ServerStatus = () => {
     const checkStatus = async () => {
       setStatus('warming');
       setLoadingMessage('The CPU is warming up...');
-      const SERVER_CHECK_API = import.meta.env.VITE_SERVER_CHECK_API;
-      if (!SERVER_CHECK_API) {
-        console.error("Environment variable is not defined.");
-        setStatus('cold');
-        return;
-      }
+      
       try {
         const response = await fetch("https://possible-gretna-keerthikeswaran-015d0437.koyeb.app/status");
         const data = await response.json();
