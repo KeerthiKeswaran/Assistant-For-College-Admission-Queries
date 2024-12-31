@@ -8,3 +8,7 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
 });
+/// <reference types="react-scripts" />
+
+/// <reference types="vite/client" />
+

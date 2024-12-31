@@ -18,9 +18,15 @@ export const Chatbot = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const CHATBOT_API = import.meta.env.VITE_CHATBOT_API;
+  if (!CHATBOT_API) {
+    console.error("Environment variable is not defined.");
+    return;
+  }
+
   const getResponseFromBackend = async (message: string) => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/GetResult', { query: message });
+      const response = await axios.post("https://possible-gretna-keerthikeswaran-015d0437.koyeb.app/GetResult", { query: message });
 
       let responseText = typeof response.data.results === 'string'
         ? response.data.results

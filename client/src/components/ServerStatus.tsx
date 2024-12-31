@@ -4,24 +4,29 @@ import { ServerCrash, Server } from 'lucide-react';
 const ServerStatus = () => {
   const [status, setStatus] = useState<'warming' | 'warm' | 'cold'>('cold');
   const [loadingMessage, setLoadingMessage] = useState('The CPU is warming up');
-  
+
   useEffect(() => {
     const checkStatus = async () => {
       setStatus('warming');
       setLoadingMessage('The CPU is warming up...');
-      
+      const SERVER_CHECK_API = import.meta.env.VITE_SERVER_CHECK_API;
+      if (!SERVER_CHECK_API) {
+        console.error("Environment variable is not defined.");
+        setStatus('cold');
+        return;
+      }
       try {
-        const response = await fetch('http://127.0.0.1:8000/status'); 
+        const response = await fetch("https://possible-gretna-keerthikeswaran-015d0437.koyeb.app/status");
         const data = await response.json();
-        
+
         if (data.status === 'active') {
-          setStatus('warm'); 
+          setStatus('warm');
         } else {
           setStatus('cold'); // Server is inactive
         }
       } catch (error) {
         console.error('Error fetching server status:', error);
-        setStatus('cold'); 
+        setStatus('cold');
       }
     };
 
