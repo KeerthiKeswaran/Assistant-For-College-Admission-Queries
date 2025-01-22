@@ -11,7 +11,7 @@ const ServerStatus = () => {
       setLoadingMessage('The CPU is warming up...');
       
       try {
-        const response = await fetch("https://possible-gretna-keerthikeswaran-015d0437.koyeb.app/status");
+        const response = await fetch("https://career-advisor-assistan.onrender.com/status");
         const data = await response.json();
 
         if (data.status === 'active') {

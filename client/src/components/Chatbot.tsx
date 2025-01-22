@@ -21,7 +21,7 @@ export const Chatbot = () => {
 
   const getResponseFromBackend = async (message: string) => {
     try {
-      const response = await axios.post("https://possible-gretna-keerthikeswaran-015d0437.koyeb.app/GetResult", { query: message });
+      const response = await axios.post("https://career-advisor-assistan.onrender.com/GetResult", { query: message });
 
       let responseText = typeof response.data.results === 'string'
         ? response.data.results
